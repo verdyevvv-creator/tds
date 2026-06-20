@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background-color: black; color: white; font-family: monospace; padding: 15px; margin: 0; overflow-x: hidden; }
+        #output p { margin: 2px 0; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+        const colors = ['#ff4d4d', '#4dff4d', '#ffff4d', '#4dffff', '#ff4dff', '#ffffff'];
+        let i = 0;
+
+        function loop() {
+            const p = document.createElement('p');
+            p.style.color = colors[i % colors.length];
+            // İstədiyiniz yazını buraya yazın:
+            p.innerText = `${102300 + i} - səni sevirəm gözəlim)`; 
+            
+            output.appendChild(p);
+            
+            // Yaddaşı qorumaq üçün: Əgər 50 sətiri keçibsə, ən üstəki sətri sil
+            if (output.children.length > 50) {
+                output.removeChild(output.firstChild);
+            }
+
+            window.scrollTo(0, document.body.scrollHeight);
+            i++;
+            
+            // Sürəti tənzimləyin (məsələn, 100ms)
+            setTimeout(loop, 100); 
+        }
+        loop();
+    </script>
+</body>
+</html>
